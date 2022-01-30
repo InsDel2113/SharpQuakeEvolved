@@ -506,7 +506,7 @@ namespace SharpQuake
 
             if ( Cvars.SystemTickRate == null )
             {
-                Cvars.SystemTickRate = CVars.Add( "sys_ticrate", 0.05 );
+                Cvars.SystemTickRate = CVars.Add( "sys_ticrate", 0.008 );
                 Cvars.Developer = CVars.Add( "developer", false );
                 Cvars.FrameRate = CVars.Add( "host_framerate", 0.0 ); // set for slow motion
                 Cvars.HostSpeeds = CVars.Add( "host_speeds", false ); // set for running times
@@ -635,8 +635,8 @@ namespace SharpQuake
         {
             RealTime += time;
 
-            if ( !Client.cls.timedemo && RealTime - _OldRealTime < 1.0 / 72.0 )
-                return false;	// framerate is too high
+           // if ( !client.cls.timedemo && realtime - _oldrealtime < 1.0 / 72.0 )
+           //     return false;	// framerate is too high
 
             FrameTime = RealTime - _OldRealTime;
             _OldRealTime = RealTime;

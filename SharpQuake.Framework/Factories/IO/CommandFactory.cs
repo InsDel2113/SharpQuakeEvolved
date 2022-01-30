@@ -106,7 +106,7 @@ namespace SharpQuake.Framework.Factories.IO
         {
             var handled = false;
 
-            var msg = CommandMessage.FromString( text, source );
+            var msg = CommandMessage.FromString( text.ToLower(), source );
 
             // execute the command line
             if ( msg == null )

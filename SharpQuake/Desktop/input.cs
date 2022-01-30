@@ -247,7 +247,7 @@ namespace SharpQuake
             _Mouse *= Host.Client.Sensitivity;
 
             // add mouse X/Y movement to cmd
-            if ( client_input.StrafeBtn.IsDown || ( Host.Client.LookStrafe && client_input.MLookBtn.IsDown ) )
+            if ( client_input.StrafeBtn.IsDown || Host.Client.LookStrafe  )
                 cmd.sidemove += Host.Client.MSide * _Mouse.X;
             else
                 Host.Client.cl.viewangles.Y -= Host.Client.MYaw * _Mouse.X;

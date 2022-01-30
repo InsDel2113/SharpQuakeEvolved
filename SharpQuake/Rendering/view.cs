@@ -216,26 +216,6 @@ namespace SharpQuake
 			}
 		}
 
-		/// <summary>
-		/// V_CalcRoll
-		/// Used by view and sv_user
-		/// </summary>
-		public Single CalcRoll( ref Vector3 angles, ref Vector3 velocity )
-		{
-			MathLib.AngleVectors( ref angles, out _Forward, out _Right, out _Up );
-			var side = Vector3.Dot( velocity, _Right );
-			Single sign = side < 0 ? -1 : 1;
-			side = Math.Abs( side );
-
-			var value = Host.Cvars.ClRollAngle.Get<Single>();
-			if ( side < Host.Cvars.ClRollSpeed.Get<Single>() )
-				side = side * value / Host.Cvars.ClRollSpeed.Get<Single>();
-			else
-				side = value;
-
-			return side * sign;
-		}
-
 		// V_UpdatePalette
 		public void UpdatePalette( )
 		{
@@ -738,8 +718,6 @@ namespace SharpQuake
 		{
 			var cl = Host.Client.cl;
 			var rdef = Host.RenderContext.RefDef;
-			var side = CalcRoll( ref Host.Client.ViewEntity.angles, ref cl.velocity );
-			rdef.viewangles.Z += side;
 
 			if ( _DmgTime > 0 )
 			{

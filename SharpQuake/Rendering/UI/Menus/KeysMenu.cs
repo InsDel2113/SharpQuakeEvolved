@@ -46,7 +46,6 @@ namespace SharpQuake.Rendering.UI
             new String[] {"+lookup",        "look up"},
             new String[] {"+lookdown",      "look down"},
             new String[] {"centerview",     "center view"},
-            new String[] {"+mlook",         "mouse look"},
             new String[] {"+klook",         "keyboard look"},
             new String[] {"+moveup",        "swim up"},
             new String[] {"+movedown",      "swim down"}

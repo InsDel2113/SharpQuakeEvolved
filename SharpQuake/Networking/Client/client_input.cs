@@ -33,7 +33,6 @@ namespace SharpQuake
     internal static class client_input
     {
         // kbutton_t in_xxx
-        public static kbutton_t MLookBtn;
 
         public static kbutton_t KLookBtn;
         public static kbutton_t LeftBtn;
@@ -97,8 +96,6 @@ namespace SharpQuake
             Host.Commands.Add( "impulse", ImpulseCmd );
             Host.Commands.Add( "+klook", KLookDown );
             Host.Commands.Add( "-klook", KLookUp );
-            Host.Commands.Add( "+mlook", MLookDown );
-            Host.Commands.Add( "-mlook", MLookUp );
         }
 
         private static void KeyDown( CommandMessage msg, ref kbutton_t b )
@@ -164,19 +161,6 @@ namespace SharpQuake
         private static void KLookUp( CommandMessage msg )
         {
             KeyUp( msg, ref KLookBtn );
-        }
-
-        private static void MLookDown( CommandMessage msg )
-        {
-            KeyDown( msg, ref MLookBtn );
-        }
-
-        private static void MLookUp( CommandMessage msg )
-        {
-            KeyUp( msg, ref MLookBtn );
-
-            if ( ( MLookBtn.state & 1 ) == 0 && Host.Client.LookSpring )
-                Host.View.StartPitchDrift( null );
         }
 
         private static void UpDown( CommandMessage msg )
